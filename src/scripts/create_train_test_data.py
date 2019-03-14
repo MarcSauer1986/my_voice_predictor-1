@@ -91,7 +91,7 @@ if __name__ == '__main__':
     x_neg_train = pd.DataFrame(neg_matrix, columns=word_features)
     x_neg_train['target'] = 0
 
-    df_train = pd.concat([x_pos_train.drop('br', axis=1), x_neg_train.drop('br', axis=1)])
+    df_train = pd.concat([x_pos_train, x_neg_train])
     df_train.to_csv(out_dir + '/train__' + str(n_words) + '.csv', index=False)
 
     # Test
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     x_neg_test = pd.DataFrame(neg_matrix, columns=word_features)
     x_neg_test['target'] = 0
 
-    df_test = pd.concat([x_pos_test.drop('br', axis=1), x_neg_test.drop('br', axis=1)])
+    df_test = pd.concat([x_pos_test, x_neg_test])
     df_test.to_csv(out_dir + '/test__' + str(n_words) + '.csv', index=False)
 
     print('done.')
